@@ -9,6 +9,20 @@
   <meta property="og:title" content="Likith G S — AI/ML Engineer" />
   <meta property="og:description" content="RAG chatbots, automation pipelines, computer vision and cloud-integrated AI systems." />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Likith G S" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Likith G S",
+      "jobTitle": "AI/ML Engineer",
+      "url": "https://github.com/LikithGS11",
+      "sameAs": ["https://github.com/LikithGS11", "https://www.linkedin.com/in/likithgs/"]
+    }
+  </script>
   <!-- Apply saved theme before first paint (no flash). Key matches the original site. -->
   <script>
     (function () {
@@ -18,6 +32,11 @@
         var t = localStorage.getItem('theme');
         if (t === 'light') d.classList.remove('dark');
       } catch (e) {}
+      // Safety net: if script.js never boots (404, blocked, error), drop the
+      // .js class so the loader disappears and all content is shown.
+      setTimeout(function () {
+        if (!window.__portfolioBooted) d.classList.remove('js');
+      }, 8000);
     })();
   </script>
   <link rel="stylesheet" href="styles.css" />
@@ -61,7 +80,7 @@
             <span class="ti ti-sun"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
             <span class="ti ti-moon"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
           </button>
-          <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" id="menuBtn">
+          <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">
             <svg class="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             <svg class="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
@@ -93,10 +112,10 @@
         </h1>
 
         <div class="hero-role h-anim" style="--d:.4s">
-          <span id="typed" data-text="AI/ML Engineer"></span><span class="caret">|</span>
+          <span id="typed">AI/ML Engineer</span><span class="caret" aria-hidden="true">|</span>
         </div>
 
-        <p class="hero-lead h-anim" style="--d:.6s">I design and develop scalable AI solutions—ranging from RAG chatbots and automation pipelines to computer vision and cloud-integrated systems. Focused on transforming complex problems into efficient, real-world applications.</p>
+        <p class="hero-lead h-anim" style="--d:.6s">I build AI that sees and understands, from spotting industrial defects to tracking objects in real time. I also create LLM-powered chatbots and RAG systems that turn complex problems into simple, practical tools.</p>
 
         <div class="hero-ctas h-anim" style="--d:.8s">
           <a href="#projects" class="btn btn-primary" data-scroll="projects">View My Projects
@@ -137,17 +156,19 @@
               <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
               Academic Journey
             </div>
-            <h3 class="edu-h reveal" style="--d:.2s">EDUCATIONAL</h3>
-            <h3 class="edu-h edu-h2 reveal" style="--d:.3s">EXCELLENCE</h3>
+            <h2 class="split-h">
+              <span class="edu-h reveal" style="--d:.2s">EDUCATIONAL</span>
+              <span class="edu-h edu-h2 reveal" style="--d:.3s">EXCELLENCE</span>
+            </h2>
             <p class="edu-lead reveal" style="--d:.4s">My academic journey has been marked by consistent excellence and a passion for technology, building a strong foundation in computer science and engineering principles.</p>
 
             <div class="edu-grid">
               <article class="edu-card group reveal" style="--d:.5s">
                 <div class="card-top">
                   <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
-                  <div class="tag-caps">CURRENT</div>
+                  <div class="tag-caps">COMPLETED</div>
                 </div>
-                <h4 class="card-title">BACHELOR OF ENGINEERING</h4>
+                <h3 class="card-title">BACHELOR OF ENGINEERING</h3>
                 <p class="edu-field">INFORMATION SCIENCE AND ENGINEERING</p>
                 <p class="edu-meta mb3">MVJ College of Engineering</p>
                 <p class="edu-meta mb4">2021 – 2025</p>
@@ -159,7 +180,7 @@
                   <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
                   <div class="tag-caps">COMPLETED</div>
                 </div>
-                <h4 class="card-title">PRE-UNIVERSITY EDUCATION</h4>
+                <h3 class="card-title">PRE-UNIVERSITY EDUCATION</h3>
                 <p class="edu-field">SCIENCE STREAM</p>
                 <p class="edu-meta mb3">Sri Saraswathi Vidyaniketan PU College</p>
                 <p class="edu-meta mb4">2019 – 2021</p>
@@ -171,7 +192,7 @@
                   <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
                   <div class="tag-caps">COMPLETED</div>
                 </div>
-                <h4 class="card-title">SECONDARY SCHOOL EDUCATION</h4>
+                <h3 class="card-title">SECONDARY SCHOOL EDUCATION</h3>
                 <p class="edu-field">SSLC BOARD</p>
                 <p class="edu-meta mb3">Alvas Education Foundation School</p>
                 <p class="edu-meta mb4">2018 – 2019</p>
@@ -193,8 +214,10 @@
             <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             Technical Expertise
           </div>
-          <h2 class="band-h reveal" style="--d:.1s">TECHNICAL</h2>
-          <h2 class="band-h band-h2 reveal" style="--d:.2s">SKILLS</h2>
+          <h2 class="split-h">
+            <span class="band-h reveal" style="--d:.1s">TECHNICAL</span>
+            <span class="band-h band-h2 reveal" style="--d:.2s">SKILLS</span>
+          </h2>
           <p class="band-lead reveal" style="--d:.3s">A comprehensive toolkit spanning AI/ML engineering, data science, and modern development technologies.</p>
 
           <div class="grid4">
@@ -253,8 +276,10 @@
             <svg viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
             Professional Journey
           </div>
-          <h2 class="band-h reveal" style="--d:.1s">WORK</h2>
-          <h2 class="band-h band-h2 reveal" style="--d:.2s">EXPERIENCE</h2>
+          <h2 class="split-h">
+            <span class="band-h reveal" style="--d:.1s">WORK</span>
+            <span class="band-h band-h2 reveal" style="--d:.2s">EXPERIENCE</span>
+          </h2>
           <p class="band-lead reveal" style="--d:.3s">A comprehensive overview of my professional journey, showcasing key roles and achievements in AI/ML and data science.</p>
 
           <div class="grid4">
@@ -264,15 +289,29 @@
                   <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                   <span class="tag-caps w50">CURRENT</span>
                 </div>
+                <h3 class="glass-title mb1">SOFTWARE ENGINEER – MACHINE LEARNING</h3>
+                <p class="company">EMAGESOFT</p>
+                <p class="dates">Dec 2025 – Present</p>
+                <p class="exp-text">Build visual anomaly detection systems that automatically flag industrial defects in video streams. Develop real-time object detection and tracking pipelines with YOLO and RF-DETR, processing 1080p video at 30+ FPS. Use SAM2 for data annotation and train classification and clustering models. Also build LLM-powered chatbots served with vLLM and Ollama.</p>
+                <div class="chips chips-w"><span>Anomaly Detection</span><span>Computer Vision</span><span>YOLO / RF-DETR</span><span>SAM2</span><span>vLLM</span></div>
+              </div>
+            </div>
+
+            <div class="group reveal" style="--d:.2s">
+              <div class="glass-card h-full">
+                <div class="card-top">
+                  <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                  <span class="tag-caps w50">RECENT</span>
+                </div>
                 <h3 class="glass-title mb1">SOFTWARE ENGINEER INTERN</h3>
                 <p class="company">CODES MINDS SOFTWARE CONSULTANCY</p>
-                <p class="dates">Sep 2025 - Current</p>
+                <p class="dates">Sep 2025 – Nov 2025</p>
                 <p class="exp-text">Engineered internal automation chatbots reducing manual communication time across cross-functional teams. Deployed client-facing FAQ chatbots improving customer support response efficiency by 40%. Built end-to-end lead-management pipelines integrating Google Forms, Sheets, Gmail, and Calendar via Zapier. Optimized onboarding workflows with automated follow-ups and lead-scoring logic.</p>
                 <div class="chips chips-w"><span>Chatbot Development</span><span>Automation</span><span>Zapier</span><span>Lead Management</span></div>
               </div>
             </div>
 
-            <div class="group reveal" style="--d:.2s">
+            <div class="group reveal" style="--d:.3s">
               <div class="glass-card h-full">
                 <div class="card-top">
                   <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
@@ -286,31 +325,17 @@
               </div>
             </div>
 
-            <div class="group reveal" style="--d:.3s">
+            <div class="group reveal" style="--d:.4s">
               <div class="glass-card h-full">
                 <div class="card-top">
                   <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                   <span class="tag-caps w50">RECENT</span>
                 </div>
-                <h3 class="glass-title mb1">AI &amp; ML INTERN</h3>
-                <p class="company">ROOMAN TECHNOLOGIES</p>
-                <p class="dates">2024</p>
-                <p class="exp-text">Gained expertise in supervised and unsupervised learning algorithms, NLP, and neural network architectures. Developed image classification models using CNNs with TensorFlow and Keras. Applied deep learning techniques for computer vision tasks including object detection and recognition. Conducted model optimization and hyperparameter tuning for performance improvement.</p>
+                <h3 class="glass-title mb1">PROJECT INTERN</h3>
+                <p class="company">IBM · WITH ROOMAN TECHNOLOGIES</p>
+                <p class="dates">Oct 2024 – Mar 2025</p>
+                <p class="exp-text">Developed CNN-based image classification models using TensorFlow and Keras. Applied deep learning to computer vision tasks, including object detection and recognition. Worked across supervised and unsupervised learning, NLP, and neural network architectures. Improved model performance through optimization and hyperparameter tuning.</p>
                 <div class="chips chips-w"><span>Deep Learning</span><span>Computer Vision</span><span>NLP</span><span>TensorFlow</span></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.4s">
-              <div class="glass-card h-full">
-                <div class="card-top">
-                  <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span class="tag-caps w50">PART-TIME</span>
-                </div>
-                <h3 class="glass-title mb1">DATA SCIENCE INTERN</h3>
-                <p class="company">CRANES VARSITY</p>
-                <p class="dates">2023 - 2023</p>
-                <p class="exp-text">Completed intensive 1-month training program in Data Science and Machine Learning fundamentals. Applied statistical analysis, data preprocessing, and feature engineering techniques. Delivered end-to-end ML projects including model development, evaluation, and deployment. Gained hands-on experience with Python data science libraries and workflow best practices.</p>
-                <div class="chips chips-w"><span>Data Science</span><span>Machine Learning</span><span>Project Delivery</span></div>
               </div>
             </div>
           </div>
@@ -331,8 +356,10 @@
               Featured Work
             </span>
           </div>
-          <h2 class="proj-h reveal" style="--d:.1s">SELECTED</h2>
-          <h2 class="proj-h proj-h2 reveal" style="--d:.2s">PROJECTS</h2>
+          <h2 class="split-h">
+            <span class="proj-h reveal" style="--d:.1s">SELECTED</span>
+            <span class="proj-h proj-h2 reveal" style="--d:.2s">PROJECTS</span>
+          </h2>
           <p class="proj-lead reveal" style="--d:.3s">A curated collection of my development work, showcasing innovative solutions in fitness platforms, cloud services, assistive technology, healthcare, and emotion recognition.</p>
           <a href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer" class="btn-muted reveal" style="--d:.4s">VIEW ALL PROJECTS</a>
         </div>
@@ -437,7 +464,5 @@
       </div>
     </section>
   </main>
-
-  <noscript><style>.loader{display:none}</style></noscript>
 </body>
 </html>

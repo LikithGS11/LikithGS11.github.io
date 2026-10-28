@@ -1,6 +1,7 @@
 # Downloads the three background images from your current Figma site into .\assets
 # Run once from this folder in PowerShell:  powershell -ExecutionPolicy Bypass -File .\download-assets.ps1
 $ErrorActionPreference = "Stop"
+$ProgressPreference = "SilentlyContinue"   # the progress bar makes Invoke-WebRequest very slow on PS 5.1
 Set-Location $PSScriptRoot
 New-Item -ItemType Directory -Force -Path assets | Out-Null
 $base = "https://gslikith.figma.site/_assets/v11"

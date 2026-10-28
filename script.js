@@ -3,9 +3,12 @@
   'use strict';
 
   // ---- Config ---------------------------------------------------------
-  var LOADER_MS = 4500;   // original runs ~4.5s; set to 0 to disable the loader
+  var LOADER_MS = 2000;   // loader length (original ran ~4.5s); set to 0 to disable it
   var TYPE_MS = 100;      // per-character typing speed for the hero role
   var THEME_KEY = 'theme';
+  var LOADER_SEEN_KEY = 'loaderSeen';   // loader plays once per browser session
+
+  window.__portfolioBooted = true;      // tells the inline safety net in <head> we're alive
 
   var root = document.documentElement;
   var body = document.body;
@@ -14,10 +17,14 @@
   // ---- Loader ---------------------------------------------------------
   function runLoader(done) {
     var loader = document.getElementById('loader');
-    if (!loader || LOADER_MS <= 0 || reduceMotion) {
+    var seen = false;
+    try { seen = sessionStorage.getItem(LOADER_SEEN_KEY) === '1'; } catch (e) {}
+    // no .js class means the safety net already gave up on animations
+    if (!loader || LOADER_MS <= 0 || reduceMotion || seen || !root.classList.contains('js')) {
       if (loader) loader.classList.add('done');
       return done();
     }
+    try { sessionStorage.setItem(LOADER_SEEN_KEY, '1'); } catch (e) {}
     body.classList.add('is-loading');
 
     // twinkling background particles
@@ -71,8 +78,10 @@
 
     var el = document.getElementById('typed');
     if (!el) return;
-    var text = el.getAttribute('data-text') || '';
-    if (reduceMotion) { el.textContent = text; return; }
+    // the full text ships in the HTML (for crawlers / no-JS); clear it, then type it back
+    var text = el.textContent;
+    if (reduceMotion || !root.classList.contains('js')) return;
+    el.textContent = '';
     var i = 0;
     setTimeout(function step() {
       el.textContent = text.slice(0, ++i);
@@ -103,14 +112,20 @@
 
   // ---- Theme toggle (same localStorage key as the original) ----------
   function initTheme() {
-    document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+    var btns = document.querySelectorAll('[data-theme-toggle]');
+    // desktop and mobile each have a toggle; keep both labels in sync
+    function syncLabels() {
+      var label = root.classList.contains('dark') ? 'Switch to light mode' : 'Switch to dark mode';
+      btns.forEach(function (b) { b.setAttribute('aria-label', label); });
+    }
+    btns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var dark = root.classList.toggle('dark');
-        btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        syncLabels();
         try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light'); } catch (e) {}
       });
-      btn.setAttribute('aria-label', root.classList.contains('dark') ? 'Switch to light mode' : 'Switch to dark mode');
     });
+    syncLabels();
   }
 
   // ---- Mobile menu + smooth section scrolling ------------------------
@@ -129,6 +144,11 @@
         var open = menu.classList.toggle('open');
         menuBtn.setAttribute('aria-expanded', String(open));
         menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Escape' || !menu.classList.contains('open')) return;
+        closeMenu();
+        menuBtn.focus();
       });
     }
 

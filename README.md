@@ -55,8 +55,8 @@ Tick **Enforce HTTPS** once the certificate is issued.
 ## Editing
 
 - **Text / projects / jobs:** edit `index.html` directly. Each card is a self-contained block; copy one to add another.
-- **Loader length:** `LOADER_MS` at the top of `script.js` (`4500` = same as the original; `0` turns it off).
-- **Typing speed:** `TYPE_MS` in `script.js`. The typed text comes from `data-text` on `#typed` in `index.html`.
+- **Loader length:** `LOADER_MS` at the top of `script.js` (`2000` by default; the original was `4500`; `0` turns it off). It plays once per browser session, so reloads and return visits skip it.
+- **Typing speed:** `TYPE_MS` in `script.js`. The typed text is the text inside `#typed` in `index.html`.
 - **CV link:** the **Download CV** button points to your Google Drive file. Change the `href` to swap it.
 - **Colors:** theme tokens are at the top of `styles.css` (`:root` = light, `html.dark` = dark).
 
@@ -64,4 +64,6 @@ Tick **Enforce HTTPS** once the certificate is issued.
 
 - Dark mode is the default; the choice is saved in `localStorage` under the same `theme` key the Figma site used.
 - Respects the OS "reduce motion" setting (skips the loader and entrance animations for those users).
+- If `script.js` fails to load, a small inline script in `<head>` removes the loader and shows all content after 8 seconds.
+- Favicon is `favicon.svg`. For a link preview image on LinkedIn/WhatsApp, add an `og:image` tag pointing to a 1200×630 image (and `og:url` / `canonical` once you have a domain).
 - Content is in the HTML itself, so it is indexable by search engines and readable without JavaScript.
