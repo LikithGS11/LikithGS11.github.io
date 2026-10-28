@@ -3,6 +3,7 @@
   'use strict';
 
   var THEME_KEY = 'theme';
+  var ROLE_MS = 2800;     // how long each hero role stays before the next slides in
 
   window.__portfolioBooted = true;      // tells the inline safety net in <head> we're alive
 
@@ -25,6 +26,27 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function (n) { io.observe(n); });
+  }
+
+  // ---- Rotating hero role ---------------------------------------------
+  function initRoles() {
+    var el = document.getElementById('role');
+    if (!el) return;
+    var roles = (el.getAttribute('data-roles') || '').split('|').filter(Boolean);
+    if (roles.length < 2 || reduceMotion) return;   // reduced motion keeps the first role still
+    var i = 0;
+    setInterval(function () {
+      el.classList.add('is-out');
+      setTimeout(function () {
+        i = (i + 1) % roles.length;
+        el.textContent = roles[i];
+        // jump below the line without animating, then let it slide up into place
+        el.classList.remove('is-out');
+        el.classList.add('is-pre');
+        void el.offsetWidth;
+        el.classList.remove('is-pre');
+      }, 250);
+    }, ROLE_MS);
   }
 
   // ---- Theme toggle (same localStorage key as the original) ----------
@@ -165,6 +187,7 @@
   initNav();
   initScrollUi();
   initCopyEmail();
+  initRoles();
   initReveals();
   // let the intro fade in on the next frame, so the transition actually runs
   requestAnimationFrame(function () { body.classList.add('ready'); });

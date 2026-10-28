@@ -171,6 +171,10 @@ svg {
 .hero-photo { display: block; width: 6rem; height: 6rem; border-radius: 50%; object-fit: cover; margin-bottom: 1.75rem; }
 .hero-name { font-size: clamp(2.5rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: -0.02em; }
 .hero-role { font-size: clamp(1.125rem, 2.4vw, 1.3125rem); color: var(--muted); margin: .625rem 0 1.75rem; }
+/* rotating role: the old one slides up and out, the next slides up into place */
+.role { display: inline-block; transition: opacity 250ms var(--ease), translate 250ms var(--ease); }
+.role.is-out { opacity: 0; translate: 0 -0.35em; }
+.role.is-pre { opacity: 0; translate: 0 0.35em; transition: none; }
 .hero-intro { font-size: 1.125rem; line-height: 1.7; max-width: 38rem; margin-bottom: 2.25rem; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.75rem; }
 .hero-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
