@@ -2,125 +2,13 @@
 (function () {
   'use strict';
 
-  // ---- Config ---------------------------------------------------------
-  var LOADER_MS = 1000;   // loader length (original ran ~4.5s); set to 0 to disable it
-  var TYPE_MS = 100;      // per-character typing speed for the hero role
-  var ERASE_MS = 45;      // per-character erase speed between roles
-  var ROLE_HOLD_MS = 1800; // how long each finished role stays on screen
   var THEME_KEY = 'theme';
-  var LOADER_SEEN_KEY = 'loaderSeen';   // loader plays once per browser session
 
   window.__portfolioBooted = true;      // tells the inline safety net in <head> we're alive
 
   var root = document.documentElement;
   var body = document.body;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ---- Loader ---------------------------------------------------------
-  function runLoader(done) {
-    var loader = document.getElementById('loader');
-    var seen = false;
-    try { seen = sessionStorage.getItem(LOADER_SEEN_KEY) === '1'; } catch (e) {}
-    // no .js class means the safety net already gave up on animations
-    if (!loader || LOADER_MS <= 0 || reduceMotion || seen || !root.classList.contains('js')) {
-      if (loader) loader.classList.add('done');
-      return done();
-    }
-    try { sessionStorage.setItem(LOADER_SEEN_KEY, '1'); } catch (e) {}
-    body.classList.add('is-loading');
-
-    var bar = document.getElementById('loaderBar');
-    var start = performance.now();
-
-    function tick(now) {
-      var t = Math.min((now - start) / LOADER_MS, 1);
-      bar.style.width = (100 * (1 - Math.pow(1 - t, 3))) + '%';   // ease-out fill
-      if (t < 1) return requestAnimationFrame(tick);
-      setTimeout(function () {
-        loader.classList.add('done');
-        body.classList.remove('is-loading');
-        setTimeout(function () { loader.remove(); }, 700);
-        done();
-      }, 150);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  // ---- Hero entrance + typing ----------------------------------------
-  function playHero() {
-    var hero = document.querySelector('.hero');
-    if (hero) hero.classList.add('play');
-
-    var el = document.getElementById('typed');
-    if (!el) return;
-    // the first role ships in the HTML (for crawlers / no-JS); clear it, then type
-    // each role in data-roles, erase it, and move on to the next, forever
-    var roles = (el.getAttribute('data-roles') || el.textContent).split('|');
-    if (reduceMotion || !root.classList.contains('js')) return;
-    el.textContent = '';
-    var r = 0, i = 0, erasing = false;
-    function step() {
-      var text = roles[r];
-      if (!erasing) {
-        el.textContent = text.slice(0, ++i);
-        if (i < text.length) return setTimeout(step, TYPE_MS);
-        if (roles.length < 2) return;   // a single role types once and stays
-        erasing = true;
-        return setTimeout(step, ROLE_HOLD_MS);
-      }
-      el.textContent = text.slice(0, --i);
-      if (i > 0) return setTimeout(step, ERASE_MS);
-      erasing = false;
-      r = (r + 1) % roles.length;
-      setTimeout(step, 350);
-    }
-    setTimeout(step, 600);
-  }
-
-  // ---- Card hover glow (follows the pointer) -------------------------
-  function initSpotlight() {
-    if (!window.matchMedia('(hover: hover)').matches) return;   // skip touch screens
-    document.querySelectorAll('.edu-card, .glass-card, .proj-card').forEach(function (card) {
-      card.addEventListener('pointermove', function (ev) {
-        var box = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (ev.clientX - box.left) + 'px');
-        card.style.setProperty('--my', (ev.clientY - box.top) + 'px');
-      });
-    });
-  }
-
-  // ---- Scroll progress bar + active nav link -------------------------
-  function initScrollUi() {
-    var bar = document.getElementById('scrollProgress');
-    var queued = false;
-    function update() {
-      queued = false;
-      var max = root.scrollHeight - window.innerHeight;
-      if (bar) bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1) : 0);
-    }
-    window.addEventListener('scroll', function () {
-      if (!queued) { queued = true; requestAnimationFrame(update); }
-    }, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-
-    if (!('IntersectionObserver' in window)) return;
-    var links = document.querySelectorAll('.nav-links > a[data-scroll], .mobile-menu-inner a[data-scroll]');
-    // a section is "current" while it crosses the middle of the viewport;
-    // the hero has no nav link, so reaching it clears the highlight
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) {
-          var on = a.getAttribute('data-scroll') === e.target.id;
-          a.classList.toggle('active', on);
-          if (on) a.setAttribute('aria-current', 'true');
-          else a.removeAttribute('aria-current');
-        });
-      });
-    }, { rootMargin: '-50% 0px -50% 0px' });
-    document.querySelectorAll('.hero, #about, #experience, #projects, #contact').forEach(function (s) { io.observe(s); });
-  }
 
   // ---- Scroll reveals -------------------------------------------------
   function initReveals() {
@@ -132,21 +20,16 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        var n = e.target;
-        n.classList.add('in');
-        io.unobserve(n);
-        // once the entrance finishes, switch to fast hover transitions
-        var delay = parseFloat(getComputedStyle(n).getPropertyValue('--d')) || 0;
-        setTimeout(function () { n.classList.add('settled'); }, (delay + 0.85) * 1000);
+        e.target.classList.add('in');
+        io.unobserve(e.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function (n) { io.observe(n); });
   }
 
   // ---- Theme toggle (same localStorage key as the original) ----------
   function initTheme() {
     var btns = document.querySelectorAll('[data-theme-toggle]');
-    // desktop and mobile each have a toggle; keep both labels in sync
     function syncLabels() {
       var label = root.classList.contains('dark') ? 'Switch to light mode' : 'Switch to dark mode';
       btns.forEach(function (b) { b.setAttribute('aria-label', label); });
@@ -192,10 +75,86 @@
         if (!target) return;
         ev.preventDefault();
         closeMenu();
-        var y = id === 'top' ? 0 : target.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+        // scroll-padding-top in CSS keeps the section clear of the sticky header
+        if (id === 'top') window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
         if (history.replaceState) history.replaceState(null, '', id === 'top' ? location.pathname : '#' + id);
       });
+    });
+  }
+
+  // ---- Header border, scroll progress, active nav link ---------------
+  function initScrollUi() {
+    var header = document.getElementById('siteHeader');
+    var bar = document.getElementById('scrollProgress');
+    var sections = document.querySelectorAll('main > section');
+    var links = document.querySelectorAll('.nav-links a[data-scroll], .mobile-menu-inner a[data-scroll]');
+    var current = null;
+    var queued = false;
+
+    function update() {
+      queued = false;
+      var max = root.scrollHeight - window.innerHeight;
+      if (bar) bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1) : 0);
+      if (header) header.classList.toggle('scrolled', window.scrollY > 8);
+      markActive();
+    }
+
+    // active nav link: the last section whose top has passed 35% of the viewport
+    // (or the last section once the page bottoms out, since Contact is short).
+    // The intro and education have no nav link, so reaching them clears it.
+    function markActive() {
+      var line = window.innerHeight * 0.35, id = null;
+      sections.forEach(function (s) { if (s.getBoundingClientRect().top <= line) id = s.id; });
+      if (window.innerHeight + window.scrollY >= root.scrollHeight - 2) id = sections[sections.length - 1].id;
+      if (id === current) return;
+      current = id;
+      links.forEach(function (a) {
+        var on = a.getAttribute('data-scroll') === id;
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!queued) { queued = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  // ---- Copy email button ----------------------------------------------
+  function initCopyEmail() {
+    var btn = document.getElementById('copyEmail');
+    if (!btn) return;
+    var status = document.getElementById('copyStatus');
+    var timer;
+    function done(ok) {
+      btn.classList.toggle('copied', ok);
+      btn.textContent = ok ? 'Copied' : 'Press Ctrl+C';
+      if (status) status.textContent = ok ? 'Email address copied to clipboard' : '';
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        btn.classList.remove('copied');
+        btn.textContent = 'Copy';
+        if (status) status.textContent = '';
+      }, 2000);
+    }
+    btn.addEventListener('click', function () {
+      var email = btn.getAttribute('data-email');
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
+        return;
+      }
+      // fallback for plain http / older browsers
+      var tmp = document.createElement('textarea');
+      tmp.value = email; tmp.setAttribute('readonly', ''); tmp.style.position = 'fixed'; tmp.style.opacity = '0';
+      document.body.appendChild(tmp); tmp.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      tmp.remove();
+      done(ok);
     });
   }
 
@@ -204,10 +163,9 @@
   if (year) year.textContent = new Date().getFullYear();
   initTheme();
   initNav();
-  initSpotlight();
   initScrollUi();
-  runLoader(function () {
-    playHero();
-    initReveals();
-  });
+  initCopyEmail();
+  initReveals();
+  // let the intro fade in on the next frame, so the transition actually runs
+  requestAnimationFrame(function () { body.classList.add('ready'); });
 })();

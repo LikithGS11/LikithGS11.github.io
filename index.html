@@ -4,21 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>Likith G S — AI/ML Engineer</title>
-  <meta name="description" content="Likith G S — AI/ML Engineer building RAG chatbots, automation pipelines, computer vision and cloud-integrated systems." />
-  <meta property="og:title" content="Likith G S — AI/ML Engineer" />
-  <meta property="og:description" content="RAG chatbots, automation pipelines, computer vision and cloud-integrated AI systems." />
+  <title>Likith G S — Machine Learning Engineer</title>
+  <meta name="description" content="Likith G S is a Machine Learning Engineer at EmageSoft in Bengaluru, working on computer vision, anomaly detection, LLM chatbots and RAG systems." />
+  <meta property="og:title" content="Likith G S — Machine Learning Engineer" />
+  <meta property="og:description" content="Computer vision, anomaly detection, LLM chatbots and RAG systems." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Likith G S" />
   <meta name="twitter:card" content="summary" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#121211" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Likith G S",
-      "jobTitle": "AI/ML Engineer",
+      "jobTitle": "Software Engineer – Machine Learning",
+      "worksFor": { "@type": "Organization", "name": "EmageSoft" },
       "url": "https://github.com/LikithGS11",
       "sameAs": ["https://github.com/LikithGS11", "https://www.linkedin.com/in/likithgs/"]
     }
@@ -33,451 +34,275 @@
         if (t === 'light') d.classList.remove('dark');
       } catch (e) {}
       // Safety net: if script.js never boots (404, blocked, error), drop the
-      // .js class so the loader disappears and all content is shown.
+      // .js class so everything that fades in on scroll is simply shown.
       setTimeout(function () {
         if (!window.__portfolioBooted) d.classList.remove('js');
-      }, 8000);
+      }, 4000);
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400..700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ LOADER ============ -->
-  <div id="loader" class="loader" aria-hidden="true">
-    <div class="loader-inner">
-      <div class="loader-name">Likith G S</div>
-      <div class="loader-track"><div class="loader-bar" id="loaderBar"></div></div>
-      <p class="loader-tag">Crafting intelligent solutions with AI &amp; Machine Learning</p>
-    </div>
-  </div>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-row">
+      <a href="#top" class="logo" data-scroll="top">Likith G S</a>
 
-  <!-- ============ NAV ============ -->
-  <nav class="nav" id="nav">
-    <div class="container">
-      <div class="nav-row">
-        <a href="#top" class="logo" data-scroll="top">Likith G S</a>
-
-        <div class="nav-links">
-          <a href="#about" data-scroll="about">About<span></span></a>
-          <a href="#experience" data-scroll="experience">Experience<span></span></a>
-          <a href="#projects" data-scroll="projects">Projects<span></span></a>
-          <a href="#contact" data-scroll="contact">Contact<span></span></a>
-          <button class="theme-btn" type="button" aria-label="Toggle theme" data-theme-toggle>
-            <span class="ti ti-sun"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
-            <span class="ti ti-moon"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
-          </button>
-        </div>
-
-        <div class="nav-mobile">
-          <button class="theme-btn" type="button" aria-label="Toggle theme" data-theme-toggle>
-            <span class="ti ti-sun"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
-            <span class="ti ti-moon"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
-          </button>
-          <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">
-            <svg class="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            <svg class="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="mobile-menu-inner">
+      <nav class="nav-links" aria-label="Sections">
         <a href="#about" data-scroll="about">About</a>
         <a href="#experience" data-scroll="experience">Experience</a>
         <a href="#projects" data-scroll="projects">Projects</a>
+        <a href="#skills" data-scroll="skills">Skills</a>
         <a href="#contact" data-scroll="contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-btn" type="button" aria-label="Toggle theme" data-theme-toggle>
+          <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">
+          <svg class="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="20" y1="16" y2="16"/></svg>
+          <svg class="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
       </div>
     </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="container mobile-menu-inner" aria-label="Sections">
+        <a href="#about" data-scroll="about">About</a>
+        <a href="#experience" data-scroll="experience">Experience</a>
+        <a href="#projects" data-scroll="projects">Projects</a>
+        <a href="#skills" data-scroll="skills">Skills</a>
+        <a href="#contact" data-scroll="contact">Contact</a>
+      </nav>
+    </div>
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  </nav>
+  </header>
 
-  <main id="top">
+  <main id="main">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-badge-wrap h-anim" style="--d:0s">
-          <div class="hero-badge"><span class="pulse-dot"></span><span>Available for opportunities</span></div>
-        </div>
-
-        <h1 class="hero-title h-anim" style="--d:.2s">
-          <span class="hero-hello">Hello, I'm</span>
-          <span class="hero-name">Likith G S</span>
-        </h1>
-
-        <div class="hero-role h-anim" style="--d:.4s">
-          <span id="typed" data-roles="AI/ML Engineer|Computer Vision Engineer|LLM Developer">AI/ML Engineer</span><span class="caret" aria-hidden="true">|</span>
-        </div>
-
-        <p class="hero-lead h-anim" style="--d:.6s">I build AI that sees and understands, from spotting industrial defects to tracking objects in real time. I also create LLM-powered chatbots and RAG systems that turn complex problems into simple, practical tools.</p>
-
-        <div class="hero-ctas h-anim" style="--d:.8s">
-          <a href="#projects" class="btn btn-primary" data-scroll="projects">View My Projects
-            <svg viewBox="0 0 24 24" class="i4"><path d="m6 9 6 6 6-6"/></svg>
-          </a>
-          <a href="https://drive.google.com/uc?export=download&amp;id=1HeLCbZpgx1odJxhe2nA_XKTud23TaDZ2" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" class="i4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-            Download CV
-          </a>
-        </div>
-
-        <div class="hero-social h-anim" style="--d:1s">
-          <a href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/likithgs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="mailto:Likithmanju11@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <a href="#about" class="scroll-cue h-anim" style="--d:1.2s" data-scroll="about" aria-label="Scroll to next section">
-        <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
-      </a>
-    </section>
-
-    <!-- ============ EDUCATION (About) ============ -->
-    <section id="about" class="edu">
+    <!-- ============ INTRO ============ -->
+    <section class="hero" id="top">
       <div class="container">
-        <div class="edu-panel reveal">
-          <div class="edu-bg" aria-hidden="true"></div>
-          <div class="edu-content">
-            <div class="label label-primary reveal" style="--d:.1s">
-              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-              Academic Journey
-            </div>
-            <h2 class="split-h">
-              <span class="edu-h reveal" style="--d:.2s">EDUCATIONAL</span>
-              <span class="edu-h edu-h2 reveal" style="--d:.3s">EXCELLENCE</span>
-            </h2>
-            <p class="edu-lead reveal" style="--d:.4s">My academic journey has been marked by consistent excellence and a passion for technology, building a strong foundation in computer science and engineering principles.</p>
-
-            <div class="edu-grid">
-              <article class="edu-card group reveal" style="--d:.5s">
-                <div class="card-top">
-                  <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
-                  <div class="tag-caps">COMPLETED</div>
-                </div>
-                <h3 class="card-title">BACHELOR OF ENGINEERING</h3>
-                <p class="edu-field">INFORMATION SCIENCE AND ENGINEERING</p>
-                <p class="edu-meta mb3">MVJ College of Engineering</p>
-                <p class="edu-meta mb4">2021 – 2025</p>
-                <div class="perf"><span>Performance</span><strong>CGPA: 7.8</strong></div>
-              </article>
-
-              <article class="edu-card group reveal" style="--d:.6s">
-                <div class="card-top">
-                  <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
-                  <div class="tag-caps">COMPLETED</div>
-                </div>
-                <h3 class="card-title">PRE-UNIVERSITY EDUCATION</h3>
-                <p class="edu-field">SCIENCE STREAM</p>
-                <p class="edu-meta mb3">Sri Saraswathi Vidyaniketan PU College</p>
-                <p class="edu-meta mb4">2019 – 2021</p>
-                <div class="perf"><span>Performance</span><strong>84%</strong></div>
-              </article>
-
-              <article class="edu-card group reveal" style="--d:.7s">
-                <div class="card-top">
-                  <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
-                  <div class="tag-caps">COMPLETED</div>
-                </div>
-                <h3 class="card-title">SECONDARY SCHOOL EDUCATION</h3>
-                <p class="edu-field">SSLC BOARD</p>
-                <p class="edu-meta mb3">Alvas Education Foundation School</p>
-                <p class="edu-meta mb4">2018 – 2019</p>
-                <div class="perf"><span>Performance</span><strong>78%</strong></div>
-              </article>
-            </div>
-          </div>
+        <!-- Photo (optional): add <img class="hero-photo" src="photo.jpg" alt="Likith G S" width="96" height="96" />
+             right here, above the <h1>. -->
+        <h1 class="hero-name h-anim" style="--d:0s">Likith G S</h1>
+        <p class="hero-role h-anim" style="--d:.06s">Machine Learning Engineer at EmageSoft, Bengaluru</p>
+        <p class="hero-intro h-anim" style="--d:.12s">I build AI that sees and understands, from spotting industrial defects to tracking objects in real time. I also create LLM-powered chatbots and RAG systems that turn complex problems into simple, practical tools.</p>
+        <div class="hero-actions h-anim" style="--d:.18s">
+          <a href="https://drive.google.com/uc?export=download&amp;id=1HeLCbZpgx1odJxhe2nA_XKTud23TaDZ2" class="btn" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <span class="hero-links">
+            <a class="text-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">GitHub<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+            <a class="text-link" href="https://www.linkedin.com/in/likithgs/" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+            <a class="text-link" href="mailto:Likithmanju11@gmail.com">Email</a>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ============ SKILLS + EXPERIENCE ============ -->
-    <section id="experience" class="dark-band band-skills">
-      <div class="band-overlay" aria-hidden="true"></div>
-      <div class="container band-content">
-
-        <div class="block-skills">
-          <div class="label label-white reveal">
-            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            Technical Expertise
-          </div>
-          <h2 class="split-h">
-            <span class="band-h reveal" style="--d:.1s">TECHNICAL</span>
-            <span class="band-h band-h2 reveal" style="--d:.2s">SKILLS</span>
-          </h2>
-          <p class="band-lead reveal" style="--d:.3s">A comprehensive toolkit spanning AI/ML engineering, data science, and modern development technologies.</p>
-
-          <div class="grid4">
-            <div class="group reveal" style="--d:.1s">
-              <div class="glass-card">
-                <div class="card-top">
-                  <div class="icon-plain"><svg viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg></div>
-                  <div class="tag-caps w50">AI &amp; ML</div>
-                </div>
-                <h3 class="glass-title">ARTIFICIAL INTELLIGENCE &amp; MACHINE LEARNING</h3>
-                <div class="glass-text mb4">Machine Learning, Deep Learning, TensorFlow, PyTorch, Scikit-Learn, OpenCV, NLP, LLMs, RAG Pipelines, FAISS, BM25, LangChain, Hugging Face, Prompt Engineering</div>
-                <div class="perf perf-w"><span>Experience</span><strong>1+ year</strong></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.2s">
-              <div class="glass-card">
-                <div class="card-top">
-                  <div class="icon-plain"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-                  <div class="tag-caps w50">PROGRAMMING</div>
-                </div>
-                <h3 class="glass-title">PROGRAMMING &amp; BACKEND DEVELOPMENT</h3>
-                <div class="glass-text mb4">Python, JavaScript, SQL, SQLite, Flask, Streamlit, REST APIs, OpenAPI, Automation, Zapier, Google Workspace</div>
-                <div class="perf perf-w"><span>Experience</span><strong>3+ years</strong></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.3s">
-              <div class="glass-card">
-                <div class="card-top">
-                  <div class="icon-plain"><svg viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
-                  <div class="tag-caps w50">CLOUD &amp; DEVOPS</div>
-                </div>
-                <h3 class="glass-title">CLOUD, DEVOPS &amp; TOOLS</h3>
-                <div class="glass-text mb4">AWS, Azure, GCP, Oracle Cloud, Pricing &amp; Integration, Docker, Git, GitHub, Git LFS, CI/CD Basics</div>
-                <div class="perf perf-w"><span>Experience</span><strong>1+ year</strong></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.4s">
-              <div class="glass-card">
-                <div class="card-top">
-                  <div class="icon-plain"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
-                  <div class="tag-caps w50">DATA ENGINEERING</div>
-                </div>
-                <h3 class="glass-title">DATA ENGINEERING &amp; SYSTEM DESIGN</h3>
-                <div class="glass-text mb4">Data Processing &amp; Pipelines, Vector Databases (FAISS), Document Indexing, Retrieval Systems for RAG, System Design for AI Products, Cloud Pricing Aggregation</div>
-                <div class="perf perf-w"><span>Experience</span><strong>1+ year</strong></div>
-              </div>
-            </div>
-          </div>
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container section-grid">
+        <h2 class="section-title">About</h2>
+        <div class="section-body prose reveal">
+          <p>I'm a Machine Learning Engineer at EmageSoft, focused on computer vision: anomaly detection for industrial defects, and real-time object detection and tracking.</p>
+          <p>Before that, I built LLM chatbots, RAG pipelines and automation workflows across internships at Codes Minds, Connectivity IT Solutions and IBM. I graduated in Information Science and Engineering from MVJ College of Engineering in 2025.</p>
         </div>
+      </div>
+    </section>
 
-        <div class="block-exp">
-          <div class="label label-white reveal">
-            <svg viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-            Professional Journey
-          </div>
-          <h2 class="split-h">
-            <span class="band-h reveal" style="--d:.1s">WORK</span>
-            <span class="band-h band-h2 reveal" style="--d:.2s">EXPERIENCE</span>
-          </h2>
-          <p class="band-lead reveal" style="--d:.3s">A comprehensive overview of my professional journey, showcasing key roles and achievements in AI/ML and data science.</p>
-
-          <div class="grid4">
-            <div class="group reveal" style="--d:.1s">
-              <div class="glass-card h-full">
-                <div class="card-top">
-                  <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span class="tag-caps w50">CURRENT</span>
-                </div>
-                <h3 class="glass-title mb1">SOFTWARE ENGINEER – MACHINE LEARNING</h3>
-                <p class="company">EMAGESOFT</p>
-                <p class="dates">Dec 2025 – Present</p>
-                <p class="exp-text">Build visual anomaly detection systems that automatically flag industrial defects in video streams. Develop real-time object detection and tracking pipelines with YOLO and RF-DETR, processing 1080p video at 30+ FPS. Use SAM2 for data annotation and train classification and clustering models. Also build LLM-powered chatbots served with vLLM and Ollama.</p>
-                <div class="chips chips-w"><span>Anomaly Detection</span><span>Computer Vision</span><span>YOLO / RF-DETR</span><span>SAM2</span><span>vLLM</span></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.2s">
-              <div class="glass-card h-full">
-                <div class="card-top">
-                  <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span class="tag-caps w50">RECENT</span>
-                </div>
-                <h3 class="glass-title mb1">SOFTWARE ENGINEER INTERN</h3>
-                <p class="company">CODES MINDS SOFTWARE CONSULTANCY</p>
-                <p class="dates">Sep 2025 – Nov 2025</p>
-                <p class="exp-text">Engineered internal automation chatbots reducing manual communication time across cross-functional teams. Deployed client-facing FAQ chatbots improving customer support response efficiency by 40%. Built end-to-end lead-management pipelines integrating Google Forms, Sheets, Gmail, and Calendar via Zapier. Optimized onboarding workflows with automated follow-ups and lead-scoring logic.</p>
-                <div class="chips chips-w"><span>Chatbot Development</span><span>Automation</span><span>Zapier</span><span>Lead Management</span></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.3s">
-              <div class="glass-card h-full">
-                <div class="card-top">
-                  <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span class="tag-caps w50">RECENT</span>
-                </div>
-                <h3 class="glass-title mb1">RESEARCH INTERN</h3>
-                <p class="company">CONNECTIVITY IT SOLUTIONS</p>
-                <p class="dates">Apr 2025 – Aug 2025</p>
-                <p class="exp-text">Developed cloud aggregator platform using Python and REST APIs for multi-provider cost comparison. Integrated real-time pricing data from AWS, Azure, Oracle, and GCP into unified dashboard. Researched Network Operations Center (NOC) and Security Operations Center (SOC) best practices. Contributed to cloud infrastructure security framework recommendations.</p>
-                <div class="chips chips-w"><span>Python</span><span>REST APIs</span><span>Cloud Platforms</span><span>NOC &amp; SOC Security</span></div>
-              </div>
-            </div>
-
-            <div class="group reveal" style="--d:.4s">
-              <div class="glass-card h-full">
-                <div class="card-top">
-                  <svg class="i-cal" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span class="tag-caps w50">RECENT</span>
-                </div>
-                <h3 class="glass-title mb1">PROJECT INTERN</h3>
-                <p class="company">IBM · WITH ROOMAN TECHNOLOGIES</p>
-                <p class="dates">Oct 2024 – Mar 2025</p>
-                <p class="exp-text">Developed CNN-based image classification models using TensorFlow and Keras. Applied deep learning to computer vision tasks, including object detection and recognition. Worked across supervised and unsupervised learning, NLP, and neural network architectures. Improved model performance through optimization and hyperparameter tuning.</p>
-                <div class="chips chips-w"><span>Deep Learning</span><span>Computer Vision</span><span>NLP</span><span>TensorFlow</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="container section-grid">
+        <h2 class="section-title">Experience</h2>
+        <ol class="section-body entries">
+          <li class="entry reveal">
+            <p class="entry-meta">Dec 2025 – Present</p>
+            <h3 class="entry-title">Software Engineer – Machine Learning</h3>
+            <p class="entry-org">EmageSoft · Full-time</p>
+            <p class="entry-text">Build visual anomaly detection systems that automatically flag industrial defects in video streams. Develop real-time object detection and tracking pipelines with YOLO and RF-DETR, processing 1080p video at 30+ FPS. Use SAM2 for data annotation and train classification and clustering models. Also build LLM-powered chatbots served with vLLM and Ollama.</p>
+            <ul class="tags"><li>Anomaly Detection</li><li>Computer Vision</li><li>YOLO / RF-DETR</li><li>SAM2</li><li>vLLM</li></ul>
+          </li>
+          <li class="entry reveal">
+            <p class="entry-meta">Sep 2025 – Nov 2025</p>
+            <h3 class="entry-title">Software Engineer Intern</h3>
+            <p class="entry-org">Codes Minds Software Consultancy · Internship</p>
+            <p class="entry-text">Engineered internal automation chatbots reducing manual communication time across cross-functional teams. Deployed client-facing FAQ chatbots improving customer support response efficiency by 40%. Built end-to-end lead-management pipelines integrating Google Forms, Sheets, Gmail, and Calendar via Zapier. Optimized onboarding workflows with automated follow-ups and lead-scoring logic.</p>
+            <ul class="tags"><li>Chatbot Development</li><li>Automation</li><li>Zapier</li><li>Lead Management</li></ul>
+          </li>
+          <li class="entry reveal">
+            <p class="entry-meta">Apr 2025 – Aug 2025</p>
+            <h3 class="entry-title">Research Intern</h3>
+            <p class="entry-org">Connectivity IT Solutions · Internship</p>
+            <p class="entry-text">Developed cloud aggregator platform using Python and REST APIs for multi-provider cost comparison. Integrated real-time pricing data from AWS, Azure, Oracle, and GCP into unified dashboard. Researched Network Operations Center (NOC) and Security Operations Center (SOC) best practices. Contributed to cloud infrastructure security framework recommendations.</p>
+            <ul class="tags"><li>Python</li><li>REST APIs</li><li>Cloud Platforms</li><li>NOC &amp; SOC Security</li></ul>
+          </li>
+          <li class="entry reveal">
+            <p class="entry-meta">Oct 2024 – Mar 2025</p>
+            <h3 class="entry-title">Project Intern</h3>
+            <p class="entry-org">IBM, with Rooman Technologies · Internship</p>
+            <p class="entry-text">Developed CNN-based image classification models using TensorFlow and Keras. Applied deep learning to computer vision tasks, including object detection and recognition. Worked across supervised and unsupervised learning, NLP, and neural network architectures. Improved model performance through optimization and hyperparameter tuning.</p>
+            <ul class="tags"><li>Deep Learning</li><li>Computer Vision</li><li>NLP</li><li>TensorFlow</li></ul>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="projects">
-      <div class="projects-overlay"></div>
-      <div class="projects-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="container band-content">
-        <div class="proj-head">
-          <div class="reveal">
-            <span class="chip-primary">
-              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              Featured Work
-            </span>
-          </div>
-          <h2 class="split-h">
-            <span class="proj-h reveal" style="--d:.1s">SELECTED</span>
-            <span class="proj-h proj-h2 reveal" style="--d:.2s">PROJECTS</span>
-          </h2>
-          <p class="proj-lead reveal" style="--d:.3s">A curated collection of my development work, showcasing innovative solutions in fitness platforms, cloud services, assistive technology, healthcare, and emotion recognition.</p>
-          <a href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer" class="btn-muted reveal" style="--d:.4s">VIEW ALL PROJECTS</a>
-        </div>
-
-        <div class="proj-grid">
-          <article class="proj-card group reveal" style="--d:.1s">
-            <div class="proj-top"><span class="cat"><i></i>PROGRAMMING</span><a class="details" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VIEW DETAILS <svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-            <h3 class="proj-title">LEAD MANAGEMENT AUTOMATION SYSTEM</h3>
-            <p class="proj-text">Built end-to-end lead automation workflow integrating Google Forms, Sheets, Gmail, and Calendar through Zapier. Implemented custom lead-scoring model for intelligent segmentation and priority routing. Automated email sequences with conditional logic handling incomplete data and timezone-aware follow-ups. Deployed advanced features including sales-rep assignment, keyword extraction via Zapier Formatter, and automated calendar reminders.</p>
-            <div class="chips chips-m"><span>Zapier</span><span>Google Forms</span><span>Google Sheets</span><span>Gmail</span><span>Google Calendar</span></div>
-            <div class="proj-foot">Completed <b>•</b> 14-11-25</div>
-          </article>
-
-          <article class="proj-card group reveal" style="--d:.2s">
-            <div class="proj-top"><span class="cat"><i></i>PROGRAMMING</span><a class="details" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VIEW DETAILS <svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-            <h3 class="proj-title">RAG HR CHATBOT</h3>
-            <p class="proj-text">Developed intelligent HR assistant using Retrieval-Augmented Generation (RAG) pipeline for policy queries. Engineered document ingestion system with FAISS vector search and BM25 re-ranking for enhanced accuracy. Integrated Groq LLM to deliver context-aware responses via Streamlit interface. Containerized with Docker for seamless deployment and scalability.</p>
-            <div class="chips chips-m"><span>Python</span><span>Streamlit</span><span>FAISS / BM25</span><span>Groq LLM</span><span>Docker</span></div>
-            <div class="proj-foot">Completed <b>•</b> 17-9-25</div>
-          </article>
-
-          <article class="proj-card group reveal" style="--d:.3s">
-            <div class="proj-top"><span class="cat"><i></i>PROGRAMMING</span><a class="details" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VIEW DETAILS <svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-            <h3 class="proj-title">IRON LADY – LEADERSHIP PROGRAM CHATBOT</h3>
-            <p class="proj-text">Created web-based FAQ chatbot for leadership program website using Flask framework. Integrated Google Gemini API for natural language understanding and conversational responses. Designed seamless user experience with real-time query resolution. Deployed production-ready solution with responsive web interface.</p>
-            <div class="chips chips-m"><span>Python</span><span>Flask / Web App</span><span>Gemini API</span><span>Chatbot Development</span></div>
-            <div class="proj-foot">Completed <b>•</b> 10-9-25</div>
-          </article>
-
-          <article class="proj-card group reveal" style="--d:.1s">
-            <div class="proj-top"><span class="cat"><i></i>PROGRAMMING</span><a class="details" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VIEW DETAILS <svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-            <h3 class="proj-title">CLOUD AGGREGATOR DASHBOARD</h3>
-            <p class="proj-text">Built unified pricing comparison platform aggregating data from AWS, GCP, Oracle, Azure, IBM, and DigitalOcean. Combined real-time API data fetching with Excel-based datasets using modular Python architecture. Developed interactive Streamlit dashboard for multi-cloud cost analysis. Enabled side-by-side service comparison across major cloud providers.</p>
-            <div class="chips chips-m"><span>Python</span><span>Pandas</span><span>OpenPyXL</span><span>Streamlit</span></div>
-            <div class="proj-foot">Completed <b>•</b> 26-5-25</div>
-          </article>
-
-          <article class="proj-card group reveal" style="--d:.2s">
-            <div class="proj-top"><span class="cat"><i></i>PROGRAMMING</span><a class="details" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VIEW DETAILS <svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-            <h3 class="proj-title">VISIONAI - AI ASSISTIVE TECHNOLOGY</h3>
-            <p class="proj-text">Designed assistive technology app integrating real-time object detection using YOLOv8 and OpenCV. Implemented OCR for text recognition and voice feedback system for accessibility. Built Streamlit interface enabling visually impaired users to navigate environments independently. Optimized inference pipeline for real-time performance on standard hardware.</p>
-            <div class="chips chips-m"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Streamlit</span></div>
-            <div class="proj-foot">Completed <b>•</b> 15-4-25</div>
-          </article>
-
-          <article class="proj-card group reveal" style="--d:.3s">
-            <div class="proj-top"><span class="cat"><i></i>PROGRAMMING</span><a class="details" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VIEW DETAILS <svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-            <h3 class="proj-title">EMOTAI - EMOTION DETECTION</h3>
-            <p class="proj-text">Developed emotion-aware chatbot leveraging NLP for real-time sentiment analysis from text input. Engineered response system delivering personalized suggestions including relaxation techniques, music recommendations, and motivational content. Deployed Flask-based web application with intuitive conversation interface. Implemented mood-based response categorization for improved user engagement.</p>
-            <div class="chips chips-m"><span>Python</span><span>NLP</span><span>Flask</span><span>AI</span></div>
-            <div class="proj-foot">Completed <b>•</b> 20-3-25</div>
-          </article>
+    <section class="section" id="projects">
+      <div class="container section-grid">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-body">
+          <ul class="projects">
+            <li class="reveal">
+              <article class="project">
+                <div class="project-head">
+                  <h3 class="project-name"><a class="project-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">Lead Management Automation System<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></h3>
+                  <p class="project-date">Nov 2025</p>
+                </div>
+                <p class="project-text">Built end-to-end lead automation workflow integrating Google Forms, Sheets, Gmail, and Calendar through Zapier. Implemented custom lead-scoring model for intelligent segmentation and priority routing. Automated email sequences with conditional logic handling incomplete data and timezone-aware follow-ups. Deployed advanced features including sales-rep assignment, keyword extraction via Zapier Formatter, and automated calendar reminders.</p>
+                <ul class="tags"><li>Zapier</li><li>Google Forms</li><li>Google Sheets</li><li>Gmail</li><li>Google Calendar</li></ul>
+              </article>
+            </li>
+            <li class="reveal">
+              <article class="project">
+                <div class="project-head">
+                  <h3 class="project-name"><a class="project-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">RAG HR Chatbot<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></h3>
+                  <p class="project-date">Sep 2025</p>
+                </div>
+                <p class="project-text">Developed intelligent HR assistant using Retrieval-Augmented Generation (RAG) pipeline for policy queries. Engineered document ingestion system with FAISS vector search and BM25 re-ranking for enhanced accuracy. Integrated Groq LLM to deliver context-aware responses via Streamlit interface. Containerized with Docker for seamless deployment and scalability.</p>
+                <ul class="tags"><li>Python</li><li>Streamlit</li><li>FAISS / BM25</li><li>Groq LLM</li><li>Docker</li></ul>
+              </article>
+            </li>
+            <li class="reveal">
+              <article class="project">
+                <div class="project-head">
+                  <h3 class="project-name"><a class="project-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">Iron Lady Leadership Program Chatbot<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></h3>
+                  <p class="project-date">Sep 2025</p>
+                </div>
+                <p class="project-text">Created web-based FAQ chatbot for leadership program website using Flask framework. Integrated Google Gemini API for natural language understanding and conversational responses. Designed seamless user experience with real-time query resolution. Deployed production-ready solution with responsive web interface.</p>
+                <ul class="tags"><li>Python</li><li>Flask / Web App</li><li>Gemini API</li><li>Chatbot Development</li></ul>
+              </article>
+            </li>
+            <li class="reveal">
+              <article class="project">
+                <div class="project-head">
+                  <h3 class="project-name"><a class="project-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">Cloud Aggregator Dashboard<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></h3>
+                  <p class="project-date">May 2025</p>
+                </div>
+                <p class="project-text">Built unified pricing comparison platform aggregating data from AWS, GCP, Oracle, Azure, IBM, and DigitalOcean. Combined real-time API data fetching with Excel-based datasets using modular Python architecture. Developed interactive Streamlit dashboard for multi-cloud cost analysis. Enabled side-by-side service comparison across major cloud providers.</p>
+                <ul class="tags"><li>Python</li><li>Pandas</li><li>OpenPyXL</li><li>Streamlit</li></ul>
+              </article>
+            </li>
+            <li class="reveal">
+              <article class="project">
+                <div class="project-head">
+                  <h3 class="project-name"><a class="project-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">VisionAI<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></h3>
+                  <p class="project-date">Apr 2025</p>
+                </div>
+                <p class="project-text">Designed assistive technology app integrating real-time object detection using YOLOv8 and OpenCV. Implemented OCR for text recognition and voice feedback system for accessibility. Built Streamlit interface enabling visually impaired users to navigate environments independently. Optimized inference pipeline for real-time performance on standard hardware.</p>
+                <ul class="tags"><li>Python</li><li>YOLOv8</li><li>OpenCV</li><li>Streamlit</li></ul>
+              </article>
+            </li>
+            <li class="reveal">
+              <article class="project">
+                <div class="project-head">
+                  <h3 class="project-name"><a class="project-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">EmotAI<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></h3>
+                  <p class="project-date">Mar 2025</p>
+                </div>
+                <p class="project-text">Developed emotion-aware chatbot leveraging NLP for real-time sentiment analysis from text input. Engineered response system delivering personalized suggestions including relaxation techniques, music recommendations, and motivational content. Deployed Flask-based web application with intuitive conversation interface. Implemented mood-based response categorization for improved user engagement.</p>
+                <ul class="tags"><li>Python</li><li>NLP</li><li>Flask</li><li>AI</li></ul>
+              </article>
+            </li>
+          </ul>
+          <a class="text-link more reveal" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">More on GitHub<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
         </div>
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
-    <section id="contact" class="dark-band band-contact">
-      <div class="band-overlay" aria-hidden="true"></div>
-      <div class="container band-content">
-        <div class="contact-head">
-          <div class="label label-white reveal">
-            <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            Get in Touch
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="container section-grid">
+        <h2 class="section-title">Skills</h2>
+        <dl class="section-body skills reveal">
+          <div>
+            <dt>Computer vision</dt>
+            <dd>YOLO, RF-DETR, SAM2, OpenCV, object detection, object tracking, anomaly detection, image classification</dd>
           </div>
-          <h2 class="contact-h reveal" style="--d:.1s">LET'S WORK<br /><span>TOGETHER</span></h2>
-          <p class="contact-lead reveal" style="--d:.2s">Ready to bring your ideas to life? Let's connect and create something amazing.</p>
-        </div>
+          <div>
+            <dt>AI &amp; machine learning</dt>
+            <dd>Machine learning, deep learning, TensorFlow, PyTorch, Scikit-Learn, NLP, LLMs, RAG pipelines, FAISS, BM25, LangChain, Hugging Face, prompt engineering, vLLM, Ollama</dd>
+          </div>
+          <div>
+            <dt>Programming &amp; backend</dt>
+            <dd>Python, JavaScript, SQL, SQLite, Flask, Streamlit, REST APIs, OpenAPI, automation, Zapier, Google Workspace</dd>
+          </div>
+          <div>
+            <dt>Cloud, DevOps &amp; tools</dt>
+            <dd>AWS, Azure, GCP, Oracle Cloud, pricing &amp; integration, Docker, Git, GitHub, Git LFS, CI/CD basics</dd>
+          </div>
+          <div>
+            <dt>Data &amp; system design</dt>
+            <dd>Data processing and pipelines, vector databases (FAISS), document indexing, retrieval systems for RAG, system design for AI products, cloud pricing aggregation</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
 
-        <div class="grid3">
-          <div class="group reveal" style="--d:.1s">
-            <a class="glass-card contact-card" href="mailto:Likithmanju11@gmail.com">
-              <div class="contact-top">
-                <div class="icon-plain"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-                <div><div class="contact-kicker">EMAIL</div><div class="contact-title">DIRECT CONTACT</div></div>
-              </div>
-              <div class="contact-sub">Connect for opportunities</div>
-              <div class="contact-val">Likithmanju11@gmail.com</div>
-            </a>
+    <!-- ============ EDUCATION ============ -->
+    <section class="section" id="education">
+      <div class="container section-grid">
+        <h2 class="section-title">Education</h2>
+        <ol class="section-body entries entries-compact">
+          <li class="entry reveal">
+            <p class="entry-meta">2021 – 2025 · CGPA 7.8</p>
+            <h3 class="entry-title">Bachelor of Engineering, Information Science and Engineering</h3>
+            <p class="entry-org">MVJ College of Engineering</p>
+          </li>
+          <li class="entry reveal">
+            <p class="entry-meta">2019 – 2021 · 84%</p>
+            <h3 class="entry-title">Pre-University Education, Science</h3>
+            <p class="entry-org">Sri Saraswathi Vidyaniketan PU College</p>
+          </li>
+          <li class="entry reveal">
+            <p class="entry-meta">2018 – 2019 · 78%</p>
+            <h3 class="entry-title">Secondary School (SSLC)</h3>
+            <p class="entry-org">Alvas Education Foundation School</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+      <div class="container section-grid">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-body reveal">
+          <p class="contact-lead">The best way to reach me is by email.</p>
+          <div class="email-row">
+            <a class="email-link" href="mailto:Likithmanju11@gmail.com">Likithmanju11@gmail.com</a>
+            <button type="button" class="copy-btn" id="copyEmail" data-email="Likithmanju11@gmail.com">Copy</button>
+            <span class="sr-only" aria-live="polite" id="copyStatus"></span>
           </div>
-          <div class="group reveal" style="--d:.2s">
-            <a class="glass-card contact-card" href="https://www.linkedin.com/in/likithgs/" target="_blank" rel="noopener noreferrer">
-              <div class="contact-top">
-                <div class="icon-plain"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
-                <div><div class="contact-kicker">LINKEDIN</div><div class="contact-title">PROFESSIONAL NETWORK</div></div>
-              </div>
-              <div class="contact-sub">Connect for opportunities</div>
-              <div class="contact-val">linkedin.com/in/likithgs</div>
-            </a>
-          </div>
-          <div class="group reveal" style="--d:.3s">
-            <a class="glass-card contact-card" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">
-              <div class="contact-top">
-                <div class="icon-plain"><svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></div>
-                <div><div class="contact-kicker">GITHUB</div><div class="contact-title">CODE REPOSITORY</div></div>
-              </div>
-              <div class="contact-sub">Connect for contributions</div>
-              <div class="contact-val">github.com/LikithGS11</div>
-            </a>
-          </div>
+          <p class="contact-links">
+            <a class="text-link" href="https://www.linkedin.com/in/likithgs/" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+            <a class="text-link" href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer">GitHub<svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container footer-row">
-      <p class="footer-copy">&copy; <span id="year">2026</span> Likith G S</p>
-      <div class="footer-links">
-        <a href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/likithgs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="mailto:Likithmanju11@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </a>
-      </div>
-      <a href="#top" class="to-top" data-scroll="top">Back to top
-        <svg viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
-      </a>
+      <p>&copy; <span id="year">2026</span> Likith G S</p>
+      <a href="#top" class="text-link" data-scroll="top">Back to top</a>
     </div>
   </footer>
 </body>
