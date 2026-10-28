@@ -102,40 +102,24 @@ html.js .loader {
   transition: opacity .6s var(--ease), visibility .6s;
 }
 .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-particles { position: absolute; inset: 0; overflow: hidden; }
-.loader-particles i {
-  position: absolute; width: 3px; height: 3px; border-radius: 50%;
-  background: rgba(255, 255, 255, .35);
-  animation: twinkle var(--t, 3s) ease-in-out var(--dl, 0s) infinite;
-}
-@keyframes twinkle {
-  0%, 100% { opacity: 0; transform: translateY(0) scale(.6); }
-  50%      { opacity: 1; transform: translateY(-14px) scale(1); }
-}
 .loader-inner { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.loader-row, .loader-track { width: 20rem; max-width: calc(100vw - 3rem); }
-.loader-row {
-  display: flex; justify-content: space-between;
-  font-size: .875rem; color: oklch(0.708 0 0); margin-bottom: .75rem;
+/* short branded intro: name rises in, a thin bar fills, tagline fades in */
+.loader-name {
+  font-size: 2.25rem; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1.25rem;
+  background: linear-gradient(to right, oklch(0.985 0 0), oklch(0.985 0 0 / .6));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: loader-in .6s var(--ease-out) both;
 }
-.loader-track { height: 6px; background: oklch(0.269 0 0); border-radius: 999px; overflow: hidden; }
-.loader-bar {
-  height: 100%; width: 0; border-radius: 999px;
-  background: linear-gradient(90deg, oklch(0.985 0 0), oklch(0.85 0 0));
-  transition: width .2s linear;
+.loader-track {
+  width: 12rem; max-width: calc(100vw - 3rem); height: 2px; margin-bottom: 1.25rem;
+  background: oklch(0.269 0 0); border-radius: 999px; overflow: hidden;
 }
-.loader-dots { display: flex; justify-content: center; gap: .375rem; margin: 1.9rem 0 3.4rem; }
-.loader-dots span {
-  width: .85rem; height: .85rem; border-radius: 50%; background: oklch(0.985 0 0);
-  animation: dot 1.2s ease-in-out infinite;
+.loader-bar { height: 100%; width: 0; border-radius: 999px; background: var(--orange-400); }
+@keyframes loader-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
 }
-.loader-dots span:nth-child(2) { animation-delay: .2s; }
-.loader-dots span:nth-child(3) { animation-delay: .4s; }
-@keyframes dot {
-  0%, 100% { transform: scale(.8); opacity: .4; }
-  50%      { transform: scale(1.15); opacity: 1; }
-}
-.loader-tag { font-size: .875rem; color: oklch(0.708 0 0); white-space: nowrap; }
+.loader-tag { font-size: .875rem; color: oklch(0.708 0 0); white-space: nowrap; animation: loader-in .6s var(--ease-out) .15s both; }
 @media (max-width: 420px) { .loader-tag { white-space: normal; } }
 
 /* =========================================================
@@ -159,12 +143,21 @@ html.js .loader {
   position: relative; color: var(--muted-foreground);
   transition: color .3s var(--ease);
 }
-.nav-links > a:hover { color: var(--foreground); }
+.nav-links > a:hover,
+.nav-links > a.active { color: var(--foreground); }
 .nav-links > a span {
   position: absolute; left: 0; bottom: -.25rem; height: 2px; width: 0;
   background: var(--primary); transition: width .3s var(--ease);
 }
-.nav-links > a:hover span { width: 100%; }
+.nav-links > a:hover span,
+.nav-links > a.active span { width: 100%; }
+
+/* reading progress along the top edge of the nav (--p is 0..1, set in script.js) */
+.scroll-progress {
+  position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--hot);
+  transform-origin: 0 50%; transform: scaleX(var(--p, 0));
+}
 
 .theme-btn {
   position: relative; padding: .5rem; border-radius: .5rem; background: var(--accent);
@@ -207,7 +200,8 @@ html:not(.dark) .theme-btn .ti-moon { opacity: 0; transform: rotate(90deg) scale
 .mobile-menu-inner a:first-child { padding-top: 1rem; }
 .mobile-menu-inner a:last-child { padding-bottom: 1rem; }
 .mobile-menu-inner a + a { margin-top: 1rem; }
-.mobile-menu-inner a:hover { color: var(--foreground); }
+.mobile-menu-inner a:hover,
+.mobile-menu-inner a.active { color: var(--foreground); }
 
 @media (min-width: 768px) {
   .nav-links { display: flex; }
@@ -315,15 +309,13 @@ html:not(.dark) .theme-btn .ti-moon { opacity: 0; transform: rotate(90deg) scale
   position: relative; overflow: hidden; border-radius: 1.5rem;
   background: linear-gradient(to bottom right, var(--background), color-mix(in oklab, var(--muted) 50%, transparent));
 }
+/* dot grid fading out from the top-right corner (pure CSS, no image) */
 .edu-bg {
-  position: absolute; inset: 0; opacity: .1;
-  background: url("assets/education-bg.png") center / cover no-repeat;
-}
-.edu-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right,
-    color-mix(in oklab, var(--background) 90%, transparent),
-    color-mix(in oklab, var(--background) 70%, transparent));
+  position: absolute; inset: 0; opacity: .14; color: var(--foreground);
+  background-image: radial-gradient(currentColor 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 100% 0%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 70% 80% at 100% 0%, #000 10%, transparent 70%);
 }
 .edu-content { position: relative; z-index: 10; padding: 2rem; }
 .edu-h { font-size: 1.875rem; line-height: 2.25rem; margin-bottom: .5rem; }
@@ -358,12 +350,25 @@ html:not(.dark) .theme-btn .ti-moon { opacity: 0; transform: rotate(90deg) scale
 /* =========================================================
    DARK BANDS (skills/experience + contact) — dark in both themes
    ========================================================= */
-.dark-band { position: relative; padding: 5rem 0; background-color: #000; background-position: center; background-size: cover; background-repeat: no-repeat; }
-.band-skills  { background-image: url("assets/skills-bg.png"); }
-.band-contact { background-image: url("assets/contact-bg.png"); }
-.band-overlay { position: absolute; inset: 0; }
-.o80 { background: rgba(0,0,0,.8); }
-.o70 { background: rgba(0,0,0,.7); }
+/* pure-CSS backdrop: a soft orange glow plus a fine grid that fades out
+   (replaces the old Figma background images) */
+.dark-band {
+  position: relative; padding: 5rem 0;
+  background:
+    radial-gradient(50rem 28rem at var(--glow-at, 85% 0%), color-mix(in oklab, var(--orange-400) 13%, transparent), transparent 70%),
+    #000;
+}
+.band-skills  { --glow-at: 85% 0%; }
+.band-contact { --glow-at: 10% 100%; }
+.band-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at var(--glow-at, 50% 0%), #000 20%, transparent 80%);
+  mask-image: radial-gradient(ellipse 90% 70% at var(--glow-at, 50% 0%), #000 20%, transparent 80%);
+}
 .band-content { position: relative; z-index: 10; }
 .block-skills { margin-bottom: 5rem; }
 
@@ -378,13 +383,13 @@ html:not(.dark) .theme-btn .ti-moon { opacity: 0; transform: rotate(90deg) scale
 
 .glass-card {
   display: block; padding: 1.5rem; border-radius: 1rem;
-  background: rgba(0,0,0,.4);
+  background: rgba(255,255,255,.03);
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
   border: 1px solid rgba(255,255,255,.1);
   color: #fff;
   transition: all .3s var(--ease);
 }
-.glass-card:hover { background: rgba(0,0,0,.6); border-color: rgba(255,255,255,.2); }
+.glass-card:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.2); }
 .icon-plain { width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.8); }
 .icon-plain svg { width: 1.5rem; height: 1.5rem; }
 .i-cal { width: 1.25rem; height: 1.25rem; color: rgba(255,255,255,.7); }
@@ -514,6 +519,54 @@ html:not(.dark) .theme-btn .ti-moon { opacity: 0; transform: rotate(90deg) scale
 @media (min-width: 1024px) { .contact-h { font-size: 4.5rem; } }
 
 /* =========================================================
+   FOOTER
+   ========================================================= */
+.footer { padding: 2rem 0; background: var(--background); border-top: 1px solid var(--border); }
+.footer-row { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; }
+.footer-copy { color: var(--muted-foreground); font-size: .875rem; line-height: 1.25rem; }
+.footer-links { display: flex; gap: .75rem; }
+.footer-links a {
+  width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center;
+  border-radius: .625rem; background: var(--accent); color: var(--muted-foreground);
+  transition: all .3s var(--ease);
+}
+.footer-links a:hover { background: var(--primary); color: var(--primary-foreground); }
+.to-top {
+  display: inline-flex; align-items: center; gap: .375rem;
+  font-size: .875rem; line-height: 1.25rem; color: var(--muted-foreground);
+  transition: color .2s var(--ease);
+}
+.to-top:hover { color: var(--foreground); }
+.to-top svg { transition: translate .3s var(--ease); }
+.to-top:hover svg { translate: 0 -3px; }
+
+@media (min-width: 768px) {
+  .footer-row { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+
+/* =========================================================
+   CARD HOVER GLOW
+   A soft orange light follows the pointer (--mx/--my set in script.js)
+   and the card lifts slightly. Uses `translate`, not `transform`, so it
+   doesn't fight the scroll-reveal transform on the same element.
+   ========================================================= */
+.edu-card, .glass-card, .proj-card {
+  --spot: color-mix(in oklab, var(--orange-400) 16%, transparent);
+  position: relative; isolation: isolate;
+}
+.edu-card::before, .glass-card::before, .proj-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; pointer-events: none;
+  background: radial-gradient(22rem circle at var(--mx, 50%) var(--my, 50%), var(--spot), transparent 60%);
+  opacity: 0; transition: opacity .3s var(--ease);
+}
+@media (hover: hover) {
+  .edu-card:hover::before, .glass-card:hover::before, .proj-card:hover::before { opacity: 1; }
+  .edu-card:hover, .glass-card:hover, .proj-card:hover { translate: 0 -4px; }
+  .proj-card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -4px rgba(0,0,0,.08); }
+}
+
+/* =========================================================
    ENTRANCE ANIMATIONS
    Hidden only when JS is running, so the page never stays blank.
    ========================================================= */
@@ -534,4 +587,5 @@ html.js .reveal.settled { transition: all .3s var(--ease); }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   html.js .h-anim, html.js .reveal { opacity: 1; transform: none; transition: none; }
   html.js .scroll-cue.h-anim { transform: translateX(-50%); }
+  .edu-card:hover, .glass-card:hover, .proj-card:hover, .to-top:hover svg { translate: none; }
 }

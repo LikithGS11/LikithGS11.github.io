@@ -46,14 +46,9 @@
 
   <!-- ============ LOADER ============ -->
   <div id="loader" class="loader" aria-hidden="true">
-    <div class="loader-particles" id="loaderParticles"></div>
     <div class="loader-inner">
-      <div class="loader-row">
-        <span id="loaderLabel">Loading Portfolio</span>
-        <span id="loaderPct">0%</span>
-      </div>
+      <div class="loader-name">Likith G S</div>
       <div class="loader-track"><div class="loader-bar" id="loaderBar"></div></div>
-      <div class="loader-dots"><span></span><span></span><span></span></div>
       <p class="loader-tag">Crafting intelligent solutions with AI &amp; Machine Learning</p>
     </div>
   </div>
@@ -95,6 +90,7 @@
         <a href="#contact" data-scroll="contact">Contact</a>
       </div>
     </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   </nav>
 
   <main id="top">
@@ -112,7 +108,7 @@
         </h1>
 
         <div class="hero-role h-anim" style="--d:.4s">
-          <span id="typed">AI/ML Engineer</span><span class="caret" aria-hidden="true">|</span>
+          <span id="typed" data-roles="AI/ML Engineer|Computer Vision Engineer|LLM Developer">AI/ML Engineer</span><span class="caret" aria-hidden="true">|</span>
         </div>
 
         <p class="hero-lead h-anim" style="--d:.6s">I build AI that sees and understands, from spotting industrial defects to tracking objects in real time. I also create LLM-powered chatbots and RAG systems that turn complex problems into simple, practical tools.</p>
@@ -149,8 +145,7 @@
     <section id="about" class="edu">
       <div class="container">
         <div class="edu-panel reveal">
-          <div class="edu-bg"></div>
-          <div class="edu-overlay"></div>
+          <div class="edu-bg" aria-hidden="true"></div>
           <div class="edu-content">
             <div class="label label-primary reveal" style="--d:.1s">
               <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -206,7 +201,7 @@
 
     <!-- ============ SKILLS + EXPERIENCE ============ -->
     <section id="experience" class="dark-band band-skills">
-      <div class="band-overlay o80"></div>
+      <div class="band-overlay" aria-hidden="true"></div>
       <div class="container band-content">
 
         <div class="block-skills">
@@ -418,7 +413,7 @@
 
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="dark-band band-contact">
-      <div class="band-overlay o70"></div>
+      <div class="band-overlay" aria-hidden="true"></div>
       <div class="container band-content">
         <div class="contact-head">
           <div class="label label-white reveal">
@@ -464,5 +459,26 @@
       </div>
     </section>
   </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <p class="footer-copy">&copy; <span id="year">2026</span> Likith G S</p>
+      <div class="footer-links">
+        <a href="https://github.com/LikithGS11" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/likithgs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:Likithmanju11@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+      <a href="#top" class="to-top" data-scroll="top">Back to top
+        <svg viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
+      </a>
+    </div>
+  </footer>
 </body>
 </html>

@@ -3,8 +3,10 @@
   'use strict';
 
   // ---- Config ---------------------------------------------------------
-  var LOADER_MS = 2000;   // loader length (original ran ~4.5s); set to 0 to disable it
+  var LOADER_MS = 1000;   // loader length (original ran ~4.5s); set to 0 to disable it
   var TYPE_MS = 100;      // per-character typing speed for the hero role
+  var ERASE_MS = 45;      // per-character erase speed between roles
+  var ROLE_HOLD_MS = 1800; // how long each finished role stays on screen
   var THEME_KEY = 'theme';
   var LOADER_SEEN_KEY = 'loaderSeen';   // loader plays once per browser session
 
@@ -27,46 +29,19 @@
     try { sessionStorage.setItem(LOADER_SEEN_KEY, '1'); } catch (e) {}
     body.classList.add('is-loading');
 
-    // twinkling background particles
-    var field = document.getElementById('loaderParticles');
-    var frag = document.createDocumentFragment();
-    for (var i = 0; i < 40; i++) {
-      var p = document.createElement('i');
-      p.style.left = (Math.random() * 100).toFixed(2) + '%';
-      p.style.top = (Math.random() * 100).toFixed(2) + '%';
-      p.style.setProperty('--t', (2 + Math.random() * 3).toFixed(2) + 's');
-      p.style.setProperty('--dl', (Math.random() * 3).toFixed(2) + 's');
-      frag.appendChild(p);
-    }
-    field.appendChild(frag);
-
     var bar = document.getElementById('loaderBar');
-    var pct = document.getElementById('loaderPct');
-    var label = document.getElementById('loaderLabel');
     var start = performance.now();
-    var shown = 0;
-
-    function stage(v) {
-      if (v < 20) return 'Loading Portfolio';
-      if (v < 50) return 'Initializing Experience';
-      return 'Almost Ready';
-    }
 
     function tick(now) {
       var t = Math.min((now - start) / LOADER_MS, 1);
-      // slightly uneven progress so it feels like real loading
-      var target = Math.round(100 * (t < 1 ? t + Math.sin(t * 12) * 0.02 : 1));
-      shown = Math.max(shown, Math.min(target, 100));
-      bar.style.width = shown + '%';
-      pct.textContent = shown + '%';
-      label.textContent = stage(shown);
+      bar.style.width = (100 * (1 - Math.pow(1 - t, 3))) + '%';   // ease-out fill
       if (t < 1) return requestAnimationFrame(tick);
       setTimeout(function () {
         loader.classList.add('done');
         body.classList.remove('is-loading');
         setTimeout(function () { loader.remove(); }, 700);
         done();
-      }, 250);
+      }, 150);
     }
     requestAnimationFrame(tick);
   }
@@ -78,15 +53,73 @@
 
     var el = document.getElementById('typed');
     if (!el) return;
-    // the full text ships in the HTML (for crawlers / no-JS); clear it, then type it back
-    var text = el.textContent;
+    // the first role ships in the HTML (for crawlers / no-JS); clear it, then type
+    // each role in data-roles, erase it, and move on to the next, forever
+    var roles = (el.getAttribute('data-roles') || el.textContent).split('|');
     if (reduceMotion || !root.classList.contains('js')) return;
     el.textContent = '';
-    var i = 0;
-    setTimeout(function step() {
-      el.textContent = text.slice(0, ++i);
-      if (i < text.length) setTimeout(step, TYPE_MS);
-    }, 600);
+    var r = 0, i = 0, erasing = false;
+    function step() {
+      var text = roles[r];
+      if (!erasing) {
+        el.textContent = text.slice(0, ++i);
+        if (i < text.length) return setTimeout(step, TYPE_MS);
+        if (roles.length < 2) return;   // a single role types once and stays
+        erasing = true;
+        return setTimeout(step, ROLE_HOLD_MS);
+      }
+      el.textContent = text.slice(0, --i);
+      if (i > 0) return setTimeout(step, ERASE_MS);
+      erasing = false;
+      r = (r + 1) % roles.length;
+      setTimeout(step, 350);
+    }
+    setTimeout(step, 600);
+  }
+
+  // ---- Card hover glow (follows the pointer) -------------------------
+  function initSpotlight() {
+    if (!window.matchMedia('(hover: hover)').matches) return;   // skip touch screens
+    document.querySelectorAll('.edu-card, .glass-card, .proj-card').forEach(function (card) {
+      card.addEventListener('pointermove', function (ev) {
+        var box = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (ev.clientX - box.left) + 'px');
+        card.style.setProperty('--my', (ev.clientY - box.top) + 'px');
+      });
+    });
+  }
+
+  // ---- Scroll progress bar + active nav link -------------------------
+  function initScrollUi() {
+    var bar = document.getElementById('scrollProgress');
+    var queued = false;
+    function update() {
+      queued = false;
+      var max = root.scrollHeight - window.innerHeight;
+      if (bar) bar.style.setProperty('--p', max > 0 ? Math.min(window.scrollY / max, 1) : 0);
+    }
+    window.addEventListener('scroll', function () {
+      if (!queued) { queued = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    if (!('IntersectionObserver' in window)) return;
+    var links = document.querySelectorAll('.nav-links > a[data-scroll], .mobile-menu-inner a[data-scroll]');
+    // a section is "current" while it crosses the middle of the viewport;
+    // the hero has no nav link, so reaching it clears the highlight
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) {
+          var on = a.getAttribute('data-scroll') === e.target.id;
+          a.classList.toggle('active', on);
+          if (on) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    document.querySelectorAll('.hero, #about, #experience, #projects, #contact').forEach(function (s) { io.observe(s); });
   }
 
   // ---- Scroll reveals -------------------------------------------------
@@ -167,8 +200,12 @@
   }
 
   // ---- Boot -----------------------------------------------------------
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
   initTheme();
   initNav();
+  initSpotlight();
+  initScrollUi();
   runLoader(function () {
     playHero();
     initReveals();
