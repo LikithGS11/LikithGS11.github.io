@@ -1,0 +1,14 @@
+# Backups / archives of the site (git already keeps every version)
+*.zip
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+
+# Local secrets, if any are ever added
+.env
