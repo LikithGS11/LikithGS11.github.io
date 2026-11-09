@@ -1,4 +1,5 @@
 # Backups / archives of the site (git already keeps every version)
+favicon.zip
 *.zip
 
 # OS clutter
